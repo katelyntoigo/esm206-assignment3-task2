@@ -245,7 +245,6 @@ Starting from the `lakers` dataset, create a new dataset called `gasol_hookshots
 - Add a new column that contains the month, parsed from the date created above with `month()`
 - Find the *number* of Gasol's hook shots recorded (not necessarily scored) by **month** (hint: `count(month)`) for the 2008 - 2009 season 
 
-**I had to use length(month) instead of count(month) because it could not count months when they were characters.**
 
 ```{r}
 # Your code here: 
@@ -256,8 +255,7 @@ gasol_hookshots <- lakers %>%
   mutate(month = month(Date))
 
 gasol_hook_month <- gasol_hookshots %>% 
-  group_by(month) %>%  
-  summarize(length(month))
+  count(month)
 
 # View it: 
 gasol_hook_month
